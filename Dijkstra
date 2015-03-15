@@ -1,0 +1,45 @@
+import java.util.*;
+import java.math.BigInteger;
+import java.math.*;
+public class Deikstra {
+    static final int inf  = Integer.MAX_VALUE;
+    static int n, s ,np = 0;
+    static boolean used[];
+    static int dist [];
+    static int graph[][];
+    static void dijkstra(int s, int[][] graph, int []dist, boolean []used) {
+        dist[s] = 0;
+        for(int i = 0;i < graph.length; ++i) {
+            int v = -1;
+            for (int j = 0;j < graph.length; ++j) {
+                if (!used[j] && (v == -1 || dist[j] < dist[v]))
+                    v = j;
+                used[v] = true;
+            }
+                for (int j = 0;j<graph.length;++j) {
+                    if (dist[v] + graph[v][j] < dist[j] && graph[v][j] != -1) {
+                        dist[j] = dist[v]+ graph[v][j];
+                }
+            }
+        }
+    }
+    public static void main(String[] b) {
+        Scanner in = new Scanner(System.in);
+        int n = in.nextInt();
+        s = in.nextInt() - 1;
+        graph = new int[n][n];
+        used = new boolean[n];
+        dist = new int[n];
+        for (int i = 0; i < n; i++)
+            for (int j = 0; j < n; j++)
+                graph[i][j] = in.nextInt();
+        for (int i = 0; i < n; i++)
+            dist[i] = inf;
+        dijkstra(s, graph, dist, used);
+        for (int i=0;i<n;++i) {
+            for (int j = 0;j<n;++j) {
+                System.out.println(graph[i][j]);
+            }
+        }
+    }
+}
