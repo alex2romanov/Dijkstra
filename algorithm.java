@@ -2,7 +2,7 @@ import java.util.Scanner;
 import java.util.*;
 import java.math.BigInteger;
 import java.math.*;
-
+//Dijkstra algorihm
 public class algorithm {
         static final int inf  = Integer.MAX_VALUE;
         static int n, s ,np, f = 0;
